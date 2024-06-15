@@ -76,6 +76,15 @@
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
+    "coveragePathIgnorePatterns": [
+      "node_modules",
+      "test-config",
+      "<rootDir>/app/dtos/",
+      "<rootDir>/database/",
+      ".module.ts",
+      ".providers.ts",
+      ".mock.ts"
+    ],
     "testEnvironment": "node",
     "moduleNameMapper": {
       "^src/(.*)$": "<rootDir>/$1"
