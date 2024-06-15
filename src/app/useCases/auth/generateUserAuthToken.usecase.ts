@@ -9,7 +9,7 @@ import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcryptjs';
 
 @Injectable()
-export class GenerateUserAuthToken {
+export class GenerateUserAuthTokenUsecase {
   constructor(
     private readonly userRepository: IUserRepository,
     private readonly jwtService: JwtService,

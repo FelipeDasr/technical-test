@@ -11,13 +11,13 @@ import { userSigninRequestValidator } from 'src/core/validators/users/userSignin
 import { userSignupRequestValidator } from 'src/core/validators/users/userSignup.validator';
 
 import { CreateUserUseCase } from 'src/app/useCases/users/createUser.usecase';
-import { GenerateUserAuthToken } from 'src/app/useCases/auth/generateUserAuthToken.usecase';
+import { GenerateUserAuthTokenUsecase } from 'src/app/useCases/auth/generateUserAuthToken.usecase';
 
 @Controller('users')
 export class UsersController {
   constructor(
     private readonly createUserUsecase: CreateUserUseCase,
-    private readonly generateUserAuthToken: GenerateUserAuthToken,
+    private readonly generateUserAuthTokenUsecase: GenerateUserAuthTokenUsecase,
   ) {}
 
   @Post('signup')
@@ -36,7 +36,7 @@ export class UsersController {
     body: IUserSigninRequest,
     @Res() response: Response,
   ) {
-    const userAuthData = await this.generateUserAuthToken.execute(body);
+    const userAuthData = await this.generateUserAuthTokenUsecase.execute(body);
     return response.status(200).json(userAuthData);
   }
 }
