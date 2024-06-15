@@ -1,8 +1,12 @@
 import { IUserRepository } from '../../../../src/app/dtos/repositories/user.repository.dto';
+import { IUser } from 'src/app/dtos/entities/user.dto';
 
 type mockedEmail = 'return_user' | 'return_null';
 
 export const MockUserRepository: IUserRepository = {
+  save: jest
+    .fn()
+    .mockImplementation(async (data: IUser) => ({ id: 1, ...data })),
   findByEmail: jest
     .fn()
     .mockImplementation(async (email: mockedEmail, withPassword?: boolean) => {
