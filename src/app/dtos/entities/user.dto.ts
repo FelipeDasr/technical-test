@@ -4,3 +4,5 @@ export interface IUser {
   email: string;
   password: string;
 }
+
+export interface IUserWithoutPassword extends Omit<IUser, 'password'> {}

@@ -17,7 +17,7 @@ export class UserEntity implements IUser {
   @Column()
   email: string;
 
-  @Column()
+  @Column({ select: false })
   password: string;
 
   @OneToMany(() => ProductEntity, (product) => product.owner)
