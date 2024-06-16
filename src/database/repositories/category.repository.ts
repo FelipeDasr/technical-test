@@ -7,7 +7,7 @@ import {
   ICategoryRepository,
   IFindAllCategoriesQuery,
 } from 'src/app/dtos/repositories/category.repository.dto';
-import { ICategory, ICategoryRecord } from 'src/app/dtos/entities/category.dto';
+import { ICategory } from 'src/app/dtos/entities/category.dto';
 import { IEntityCollection } from 'src/app/dtos/repositories';
 import { resolveFindAllCategoriesQuery } from './utils/resolvers/categories';
 
@@ -28,7 +28,7 @@ export class CategoryRepository
 
   public async findAll(
     query: IFindAllCategoriesQuery,
-  ): Promise<IEntityCollection<ICategoryRecord>> {
+  ): Promise<IEntityCollection<ICategory>> {
     const [categories, total] = await this.findAndCount(
       resolveFindAllCategoriesQuery(query),
     );

@@ -1,5 +1,5 @@
 import { ICategoryRepository } from 'src/app/dtos/repositories/category.repository.dto';
-import { ICategory, ICategoryRecord } from 'src/app/dtos/entities/category.dto';
+import { ICategory } from 'src/app/dtos/entities/category.dto';
 
 type mockedCategory = 'return_category' | 'return_null';
 
@@ -11,7 +11,7 @@ export const MockCategoryRepository: ICategoryRepository = {
   })),
   findByName: jest
     .fn()
-    .mockImplementation((name: mockedCategory): ICategoryRecord | null => {
+    .mockImplementation((name: mockedCategory): ICategory | null => {
       switch (name) {
         case 'return_category':
           return {
