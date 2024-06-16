@@ -4,6 +4,7 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne,
   OneToMany,
+  JoinColumn,
 } from 'typeorm';
 
 import { PurchaseItemEntity } from './purchaseItem.entity';
@@ -26,6 +27,7 @@ export class UserPurchaseEntity implements IUserPurchase {
   purchase_date: Date;
 
   @ManyToOne(() => UserEntity, (user) => user.purchases)
+  @JoinColumn({ name: 'user_id' })
   user: UserEntity;
 
   @OneToMany(() => PurchaseItemEntity, (purchaseItem) => purchaseItem.purchase)

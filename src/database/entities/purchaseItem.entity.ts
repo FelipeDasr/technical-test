@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
 
 import { UserPurchaseEntity } from './userPurchase.entity';
 
@@ -23,8 +29,10 @@ export class PurchaseItemEntity implements IPurchaseItem {
   quantity: number;
 
   @ManyToOne(() => UserPurchaseEntity, (userPurchase) => userPurchase.items)
+  @JoinColumn({ name: 'user_purchase_id' })
   purchase: UserPurchaseEntity;
 
   @ManyToOne(() => ProductEntity, (product) => product.purchaseItems)
+  @JoinColumn({ name: 'product_id' })
   product: ProductEntity;
 }

@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
 
 import { ProductEntity } from './product.entity';
 import { UserEntity } from './user.entity';
@@ -20,8 +26,10 @@ export class ProductCartEntity implements IProductCart {
   quantity: number;
 
   @ManyToOne(() => ProductEntity, (product) => product.productCarts)
+  @JoinColumn({ name: 'product_id' })
   product: ProductEntity;
 
   @ManyToOne(() => UserEntity, (user) => user.productCarts)
+  @JoinColumn({ name: 'user_id' })
   user: UserEntity;
 }

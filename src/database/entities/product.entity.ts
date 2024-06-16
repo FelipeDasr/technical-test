@@ -5,6 +5,7 @@ import {
   DeleteDateColumn,
   ManyToOne,
   OneToMany,
+  JoinColumn,
 } from 'typeorm';
 
 import { ProductCartEntity } from './productCart.entity';
@@ -38,9 +39,11 @@ export class ProductEntity implements IProduct {
   deleted_at: Date | null;
 
   @ManyToOne(() => CategoryEntity, (category) => category.products)
+  @JoinColumn({ name: 'category_id' })
   category: CategoryEntity;
 
   @ManyToOne(() => UserEntity, (owner) => owner.products)
+  @JoinColumn({ name: 'owner_id' })
   owner: UserEntity;
 
   @OneToMany(() => ProductCartEntity, (product) => product.product)
