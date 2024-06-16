@@ -37,4 +37,5 @@ export const MockCategoryRepository: ICategoryRepository = {
       },
     ],
   }),
+  findOneBy: jest.fn(),
 } as any as ICategoryRepository;
