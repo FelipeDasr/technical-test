@@ -1,17 +1,31 @@
-import { Body, Controller, Post, Res, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Query,
+  Post,
+  Res,
+  UseGuards,
+} from '@nestjs/common';
 import { Response } from 'express';
 
+import { IFindAllCategoriesQuery } from 'src/app/dtos/repositories/category.repository.dto';
 import { ICreateCategoryRequest } from 'src/app/dtos/requests/categories.request.dto';
 
 import { AuthGuard } from 'src/core/guards/auth.guard';
 import { ValidatorPipe } from 'src/core/pipes/requestValidator.pipe';
 import { createCategoryRequestValidator } from 'src/core/validators/categories/createCategory.validator';
+import { listCategoriesRequestValidator } from 'src/core/validators/categories/listCategories.validator';
 
 import { CreateCategoryUsecase } from 'src/app/useCases/categories/createCategory.usecase';
+import { ListCategoriesUsecase } from 'src/app/useCases/categories/listCategories.usecase';
 
 @Controller('categories')
 export class CategoriesController {
-  constructor(private readonly createCategoryUsecase: CreateCategoryUsecase) {}
+  constructor(
+    private readonly createCategoryUsecase: CreateCategoryUsecase,
+    private readonly listCategoriesUseCase: ListCategoriesUsecase,
+  ) {}
 
   @Post()
   @UseGuards(AuthGuard)
@@ -22,5 +36,15 @@ export class CategoriesController {
   ) {
     const newCategory = await this.createCategoryUsecase.execute(body);
     return response.status(201).json(newCategory);
+  }
+
+  @Get()
+  public async list(
+    @Query(new ValidatorPipe(listCategoriesRequestValidator))
+    query: IFindAllCategoriesQuery,
+    @Res() response: Response,
+  ) {
+    const categories = await this.listCategoriesUseCase.execute(query);
+    return response.status(200).json(categories);
   }
 }
