@@ -4,3 +4,7 @@ export interface ICategory {
   description: string | null;
   deleted_at: Date | null;
 }
+
+export interface ICategoryRecord extends ICategory {
+  id: number;
+}
