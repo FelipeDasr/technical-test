@@ -7,7 +7,10 @@ import {
   ICategoryRepository,
   IFindAllCategoriesQuery,
 } from 'src/app/dtos/repositories/category.repository.dto';
-import { ICategory } from 'src/app/dtos/entities/category.dto';
+import {
+  ICategory,
+  ICategoryDetails,
+} from 'src/app/dtos/entities/category.dto';
 import { IEntityCollection } from 'src/app/dtos/repositories';
 import { resolveFindAllCategoriesQuery } from './utils/resolvers/categories';
 
@@ -37,5 +40,23 @@ export class CategoryRepository
       total,
       data: categories,
     };
+  }
+
+  public async findDetailsById(id: number): Promise<ICategoryDetails | null> {
+    return (await this.createQueryBuilder('category')
+      .select([
+        'category.id',
+        'category.name',
+        'category.description',
+        'category.deleted_at',
+      ])
+      .loadRelationCountAndMap(
+        'category.total_of_products',
+        'category.products',
+        'product',
+      )
+      .groupBy('category.id')
+      .where('category.id = :id', { id })
+      .getOne()) as any as ICategoryDetails | null;
   }
 }
