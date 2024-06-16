@@ -7,12 +7,14 @@ import { GenerateUserAuthTokenUsecase } from 'src/app/useCases/auth/generateUser
 import { CreateCategoryUsecase } from 'src/app/useCases/categories/createCategory.usecase';
 import { ListCategoriesUsecase } from 'src/app/useCases/categories/listCategories.usecase';
 import { CreateProductUseCase } from 'src/app/useCases/products/createProduct.usecase';
+import { GetCategoryDetailsUsecase } from 'src/app/useCases/categories/getCategoryDetails.usecase';
 
 export const httpProviders = [
   JwtService,
   CreateUserUseCase,
   GenerateUserAuthTokenUsecase,
   CreateCategoryUsecase,
+  GetCategoryDetailsUsecase,
   ListCategoriesUsecase,
   CreateProductUseCase,
 ];
