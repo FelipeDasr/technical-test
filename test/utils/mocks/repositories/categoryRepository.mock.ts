@@ -26,4 +26,15 @@ export const MockCategoryRepository: ICategoryRepository = {
           return null;
       }
     }),
+  findAll: jest.fn().mockResolvedValue({
+    total: 1,
+    data: [
+      {
+        id: 1,
+        name: 'valid_category',
+        description: 'Category description',
+        deleted_at: null,
+      },
+    ],
+  }),
 } as any as ICategoryRepository;
