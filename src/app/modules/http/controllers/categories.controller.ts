@@ -8,6 +8,7 @@ import {
   UseGuards,
   Param,
   Patch,
+  Delete,
 } from '@nestjs/common';
 import { Response } from 'express';
 
@@ -28,14 +29,16 @@ import { GetCategoryDetailsUsecase } from 'src/app/useCases/categories/getCatego
 import { CreateCategoryUsecase } from 'src/app/useCases/categories/createCategory.usecase';
 import { ListCategoriesUsecase } from 'src/app/useCases/categories/listCategories.usecase';
 import { UpdateCategoryUsecase } from 'src/app/useCases/categories/updateCategory.usecase';
+import { DeleteCategoryUseCase } from 'src/app/useCases/categories/deleteCategory.usecase';
 
 @Controller('categories')
 export class CategoriesController {
   constructor(
     private readonly createCategoryUsecase: CreateCategoryUsecase,
-    private readonly listCategoriesUseCase: ListCategoriesUsecase,
-    private readonly getCategoryDetailsUseCase: GetCategoryDetailsUsecase,
+    private readonly listCategoriesUsecase: ListCategoriesUsecase,
+    private readonly getCategoryDetailsUsecase: GetCategoryDetailsUsecase,
     private readonly updateCategoryUsecase: UpdateCategoryUsecase,
+    private readonly deleteCategoryUsecase: DeleteCategoryUseCase,
   ) {}
 
   @Post()
@@ -54,7 +57,7 @@ export class CategoriesController {
     @Param('id', new ValidatorPipe(idValidator)) id: number,
     @Res() response: Response,
   ) {
-    const category = await this.getCategoryDetailsUseCase.execute(Number(id));
+    const category = await this.getCategoryDetailsUsecase.execute(Number(id));
     return response.status(200).json(category);
   }
 
@@ -64,7 +67,7 @@ export class CategoriesController {
     query: IFindAllCategoriesQuery,
     @Res() response: Response,
   ) {
-    const categories = await this.listCategoriesUseCase.execute(query);
+    const categories = await this.listCategoriesUsecase.execute(query);
     return response.status(200).json(categories);
   }
 
@@ -77,6 +80,16 @@ export class CategoriesController {
     @Res() response: Response,
   ) {
     const result = await this.updateCategoryUsecase.execute(categoryId, body);
+    return response.status(200).json(result);
+  }
+
+  @Delete(':id')
+  @UseGuards(AuthGuard)
+  public async delete(
+    @Param('id', new ValidatorPipe(idValidator)) categoryId: number,
+    @Res() response: Response,
+  ) {
+    const result = await this.deleteCategoryUsecase.execute(categoryId);
     return response.status(200).json(result);
   }
 }
