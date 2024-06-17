@@ -1,8 +1,4 @@
-import {
-  BadRequestException,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 
 import { ICategoryRepository } from 'src/app/dtos/repositories/category.repository.dto';
 import { IUpdateCategoryRequest } from 'src/app/dtos/requests/categories.request.dto';
@@ -12,19 +8,17 @@ export class UpdateCategoryUsecase {
   constructor(private readonly categoryRepository: ICategoryRepository) {}
 
   public async execute(id: number, data: IUpdateCategoryRequest) {
-    await this.checkIfCategoryExists(id);
     await this.checkCategoryName(id, data.name);
 
-    await this.categoryRepository.update({ id }, data);
-    return { message: 'Category updated successfully' };
-  }
+    const result = await this.categoryRepository.update({ id }, data);
 
-  private async checkIfCategoryExists(id: number) {
-    const category = await this.categoryRepository.findOneBy({ id });
-
-    if (!category) {
-      throw new NotFoundException('Category not found');
+    if (result.affected === 0) {
+      throw new BadRequestException(
+        'Category not updated, verifiy if the category exists',
+      );
     }
+
+    return { message: 'Category updated successfully' };
   }
 
   private async checkCategoryName(id: number, name: string) {
