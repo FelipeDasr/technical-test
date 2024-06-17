@@ -6,7 +6,7 @@ import { IUserRepository } from 'src/app/dtos/repositories/user.repository.dto';
 import { UserRepository } from 'src/database/repositories/user.repository';
 import { ICategoryRepository } from 'src/app/dtos/repositories/category.repository.dto';
 import { CategoryRepository } from 'src/database/repositories/category.repository';
-import { IProductRepostory } from 'src/app/dtos/repositories/product.repository.dto';
+import { IProductRepository } from 'src/app/dtos/repositories/product.repository.dto';
 import { ProductRepository } from 'src/database/repositories/product.repository';
 
 const databaseRepositories = [
@@ -19,7 +19,7 @@ const databaseRepositories = [
     useClass: CategoryRepository,
   },
   {
-    provide: IProductRepostory,
+    provide: IProductRepository,
     useClass: ProductRepository,
   },
 ];

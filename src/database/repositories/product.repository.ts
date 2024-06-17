@@ -3,13 +3,13 @@ import { Injectable } from '@nestjs/common';
 import { DataSource, Repository } from 'typeorm';
 import { ProductEntity } from '../entities/product.entity';
 
-import { IProductRepostory } from 'src/app/dtos/repositories/product.repository.dto';
+import { IProductRepository } from 'src/app/dtos/repositories/product.repository.dto';
 import { IProduct } from 'src/app/dtos/entities/product.dto';
 
 @Injectable()
 export class ProductRepository
   extends Repository<ProductEntity>
-  implements IProductRepostory
+  implements IProductRepository
 {
   constructor(private readonly dataSource: DataSource) {
     super(ProductEntity, dataSource.createEntityManager());
