@@ -7,21 +7,27 @@ import {
   Res,
   UseGuards,
   Param,
+  Patch,
 } from '@nestjs/common';
 import { Response } from 'express';
 
 import { IFindAllCategoriesQuery } from 'src/app/dtos/repositories/category.repository.dto';
-import { ICreateCategoryRequest } from 'src/app/dtos/requests/categories.request.dto';
+import {
+  ICreateCategoryRequest,
+  IUpdateCategoryRequest,
+} from 'src/app/dtos/requests/categories.request.dto';
 
 import { AuthGuard } from 'src/core/guards/auth.guard';
 import { ValidatorPipe } from 'src/core/pipes/requestValidator.pipe';
 import { createCategoryRequestValidator } from 'src/core/validators/categories/createCategory.validator';
 import { listCategoriesRequestValidator } from 'src/core/validators/categories/listCategories.validator';
+import { updateCategoryRequestValidator } from 'src/core/validators/categories/updateCategory.validator';
 import { idValidator } from 'src/core/validators/common/id.validator';
 
 import { GetCategoryDetailsUsecase } from 'src/app/useCases/categories/getCategoryDetails.usecase';
 import { CreateCategoryUsecase } from 'src/app/useCases/categories/createCategory.usecase';
 import { ListCategoriesUsecase } from 'src/app/useCases/categories/listCategories.usecase';
+import { UpdateCategoryUsecase } from 'src/app/useCases/categories/updateCategory.usecase';
 
 @Controller('categories')
 export class CategoriesController {
@@ -29,6 +35,7 @@ export class CategoriesController {
     private readonly createCategoryUsecase: CreateCategoryUsecase,
     private readonly listCategoriesUseCase: ListCategoriesUsecase,
     private readonly getCategoryDetailsUseCase: GetCategoryDetailsUsecase,
+    private readonly updateCategoryUsecase: UpdateCategoryUsecase,
   ) {}
 
   @Post()
@@ -59,5 +66,17 @@ export class CategoriesController {
   ) {
     const categories = await this.listCategoriesUseCase.execute(query);
     return response.status(200).json(categories);
+  }
+
+  @Patch(':id')
+  @UseGuards(AuthGuard)
+  public async update(
+    @Param('id', new ValidatorPipe(idValidator)) categoryId: number,
+    @Body(new ValidatorPipe(updateCategoryRequestValidator))
+    body: IUpdateCategoryRequest,
+    @Res() response: Response,
+  ) {
+    const result = await this.updateCategoryUsecase.execute(categoryId, body);
+    return response.status(200).json(result);
   }
 }
