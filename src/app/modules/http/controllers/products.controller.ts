@@ -1,6 +1,8 @@
 import {
   Body,
   Controller,
+  Get,
+  Param,
   Post,
   Request,
   Res,
@@ -14,12 +16,17 @@ import { ICreateProductRequest } from 'src/app/dtos/requests/products.request.dt
 import { AuthGuard } from 'src/core/guards/auth.guard';
 import { ValidatorPipe } from 'src/core/pipes/requestValidator.pipe';
 import { createProductRequestValidator } from 'src/core/validators/products/createProduct.validator';
+import { idValidator } from 'src/core/validators/common/id.validator';
 
 import { CreateProductUseCase } from 'src/app/useCases/products/createProduct.usecase';
+import { GetProductDetailsUsecase } from 'src/app/useCases/products/getProductDetails.usecase';
 
 @Controller('products')
 export class ProductsController {
-  constructor(private readonly createProductUsecase: CreateProductUseCase) {}
+  constructor(
+    private readonly createProductUsecase: CreateProductUseCase,
+    private readonly getProductDetailsUsecase: GetProductDetailsUsecase,
+  ) {}
 
   @Post()
   @UseGuards(AuthGuard)
@@ -32,5 +39,14 @@ export class ProductsController {
     const { id: ownerId } = request.user;
     const newProduct = await this.createProductUsecase.execute(body, ownerId);
     return response.status(201).json(newProduct);
+  }
+
+  @Get(':id')
+  public async getDetails(
+    @Param('id', new ValidatorPipe(idValidator)) productId: number,
+    @Res() response: Response,
+  ) {
+    const details = await this.getProductDetailsUsecase.execute(productId);
+    return response.status(200).json(details);
   }
 }
