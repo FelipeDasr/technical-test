@@ -14,4 +14,5 @@ export abstract class ICategoryRepository extends Repository<CategoryEntity> {
     query: IFindAllCategoriesQuery,
   ): Promise<IEntityCollection<ICategory>>;
   public abstract findDetailsById(id: number): Promise<ICategoryDetails | null>;
+  public abstract countActiveProducts(id: number): Promise<number>;
 }

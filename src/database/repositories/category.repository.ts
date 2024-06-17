@@ -59,4 +59,13 @@ export class CategoryRepository
       .where('category.id = :id', { id })
       .getOne()) as any as ICategoryDetails | null;
   }
+
+  public async countActiveProducts(id: number): Promise<number> {
+    const result = await this.query(
+      'SELECT COUNT(*) FROM products WHERE category_id = $1 AND deleted_at IS NULL',
+      [id],
+    );
+
+    return Number(result[0].count);
+  }
 }
