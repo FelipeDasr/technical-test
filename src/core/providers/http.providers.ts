@@ -11,6 +11,7 @@ import { GetCategoryDetailsUsecase } from 'src/app/useCases/categories/getCatego
 import { UpdateCategoryUsecase } from 'src/app/useCases/categories/updateCategory.usecase';
 import { DeleteCategoryUseCase } from 'src/app/useCases/categories/deleteCategory.usecase';
 import { GetProductDetailsUsecase } from 'src/app/useCases/products/getProductDetails.usecase';
+import { UpdateProductUsecase } from 'src/app/useCases/products/updateProduct.usecase';
 
 export const httpProviders = [
   JwtService,
@@ -23,5 +24,6 @@ export const httpProviders = [
   DeleteCategoryUseCase,
   CreateProductUseCase,
   GetProductDetailsUsecase,
+  UpdateProductUsecase,
 ];
 export const httpImports = [DatabaseModule];
