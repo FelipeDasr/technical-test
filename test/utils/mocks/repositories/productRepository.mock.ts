@@ -34,4 +34,24 @@ export const MockProductRepository = {
         return null;
       },
     ),
+  findDetailsById: jest.fn().mockImplementation((id: number) => {
+    if (id !== 1) return null;
+
+    return {
+      id: 1,
+      name: 'valid_product',
+      description: 'valid_description',
+      unit_price: 111,
+      deleted_at: null,
+      units_sold: 0,
+      category: {
+        id: 4,
+        name: 'valid_category',
+      },
+      owner: {
+        id: 4,
+        name: 'owner_name',
+      },
+    };
+  }),
 } as any as IProductRepository;
