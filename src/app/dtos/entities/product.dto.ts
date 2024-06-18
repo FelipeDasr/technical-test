@@ -10,10 +10,13 @@ export interface IProduct {
   deleted_at: Date | null;
 }
 
-export interface IProductDetails
+export interface IProductSimpleDetails
   extends Omit<IProduct, 'category_id' | 'owner_id'> {
-  units_sold: number;
   category: Omit<ICategory, 'deleted_at' | 'description'>;
+}
+
+export interface IProductDetails extends IProductSimpleDetails {
+  units_sold: number;
   owner: {
     id: number;
     name: string;
