@@ -9,6 +9,8 @@ export const MockCategoryRepository: ICategoryRepository = {
     ...data,
     deleted_at: null,
   })),
+  findOne: jest.fn(),
+  countActiveProducts: jest.fn(),
   findByName: jest
     .fn()
     .mockImplementation((name: mockedCategory): ICategory | null => {
@@ -38,4 +40,5 @@ export const MockCategoryRepository: ICategoryRepository = {
     ],
   }),
   findOneBy: jest.fn(),
+  softDelete: jest.fn(),
 } as any as ICategoryRepository;

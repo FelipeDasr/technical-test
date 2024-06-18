@@ -1,4 +1,4 @@
-import { IProductRepostory } from 'src/app/dtos/repositories/product.repository.dto';
+import { IProductRepository } from 'src/app/dtos/repositories/product.repository.dto';
 import { IProduct } from 'src/app/dtos/entities/product.dto';
 
 type ReturnType = 'return_product' | 'return_null';
@@ -34,4 +34,4 @@ export const MockProductRepository = {
         return null;
       },
     ),
-} as any as IProductRepostory;
+} as any as IProductRepository;
