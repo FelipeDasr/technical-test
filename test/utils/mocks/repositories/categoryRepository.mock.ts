@@ -39,6 +39,7 @@ export const MockCategoryRepository: ICategoryRepository = {
       },
     ],
   }),
+  update: jest.fn(),
   findOneBy: jest.fn(),
   softDelete: jest.fn(),
   findDetailsById: jest.fn().mockImplementation((id: number) => {
