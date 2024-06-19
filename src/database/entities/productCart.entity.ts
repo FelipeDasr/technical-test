@@ -4,6 +4,7 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne,
   JoinColumn,
+  Index,
 } from 'typeorm';
 
 import { ProductEntity } from './product.entity';
@@ -17,9 +18,11 @@ export class ProductCartEntity implements IProductCart {
   id: number;
 
   @Column()
+  @Index()
   user_id: number;
 
   @Column()
+  @Index()
   product_id: number;
 
   @Column()

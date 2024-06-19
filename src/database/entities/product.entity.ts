@@ -6,6 +6,7 @@ import {
   ManyToOne,
   OneToMany,
   JoinColumn,
+  Index,
 } from 'typeorm';
 
 import { ProductCartEntity } from './productCart.entity';
@@ -18,9 +19,11 @@ import { PurchaseItemEntity } from './purchaseItem.entity';
 @Entity('products')
 export class ProductEntity implements IProduct {
   @PrimaryGeneratedColumn('increment')
+  @Index()
   id: number;
 
   @Column()
+  @Index()
   name: string;
 
   @Column()

@@ -4,6 +4,7 @@ import {
   PrimaryGeneratedColumn,
   DeleteDateColumn,
   OneToMany,
+  Index,
 } from 'typeorm';
 
 import { ProductEntity } from './product.entity';
@@ -16,6 +17,7 @@ export class CategoryEntity implements ICategory {
   id: number;
 
   @Column()
+  @Index()
   name: string;
 
   @Column({ nullable: true })
