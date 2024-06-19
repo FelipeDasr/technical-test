@@ -4,7 +4,16 @@ import { DataSource, Repository } from 'typeorm';
 import { ProductCartEntity } from '../entities/productCart.entity';
 
 import { IProductCartRepository } from 'src/app/dtos/repositories/productCart.repository.dto';
-import { IProductCart } from 'src/app/dtos/entities/productCart.dto';
+import {
+  ICartDetails,
+  IProductCart,
+} from 'src/app/dtos/entities/productCart.dto';
+
+import { mapCartDetails } from './utils/mappers/carts.mappers';
+import {
+  resolveFindByUserIdAndProductIdQuery,
+  resolveFindCartDetailsQuery,
+} from './utils/resolvers/carts';
 
 @Injectable()
 export class ProductCartRepository
@@ -19,11 +28,13 @@ export class ProductCartRepository
     userId: number,
     productId: number,
   ): Promise<IProductCart | null> {
-    return await this.createQueryBuilder('productCart')
-      .where(
-        'productCart.user_id = :userId AND productCart.product_id = :productId',
-        { userId, productId },
-      )
-      .getOne();
+    return await resolveFindByUserIdAndProductIdQuery(this, userId, productId);
+  }
+
+  public async findCartDetailsByUserId(
+    userId: number,
+  ): Promise<ICartDetails | null> {
+    const products = await resolveFindCartDetailsQuery(this, userId);
+    return mapCartDetails(products);
   }
 }
