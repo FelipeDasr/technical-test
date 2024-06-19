@@ -19,19 +19,24 @@ import { ValidatorPipe } from 'src/core/pipes/requestValidator.pipe';
 import { createProductCartRequestValidator } from 'src/core/validators/carts/createProductCart.validator';
 
 import { AddProductToCartUseCase } from 'src/app/useCases/carts/addProductToCart.usecase';
+import { GetCartDetailsUsecase } from 'src/app/useCases/carts/getCartDetails.usecase';
 
 @Controller('carts')
 @UseGuards(AuthGuard)
 export class CartsController {
   constructor(
     private readonly addProductToCartUseCase: AddProductToCartUseCase,
+    private readonly getCartDetailsUsecase: GetCartDetailsUsecase,
   ) {}
 
   @Get()
   public async getCart(
     @Request() request: IAuthenticatedRequest,
     @Res() response: Response,
-  ) {}
+  ) {
+    const cart = await this.getCartDetailsUsecase.execute(request.user.id);
+    return response.status(200).json(cart);
+  }
 
   @Post('products')
   public async addProduct(
