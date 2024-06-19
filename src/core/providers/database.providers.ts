@@ -8,6 +8,8 @@ import { ICategoryRepository } from 'src/app/dtos/repositories/category.reposito
 import { CategoryRepository } from 'src/database/repositories/category.repository';
 import { IProductRepository } from 'src/app/dtos/repositories/product.repository.dto';
 import { ProductRepository } from 'src/database/repositories/product.repository';
+import { IProductCartRepository } from 'src/app/dtos/repositories/productCart.repository.dto';
+import { ProductCartRepository } from 'src/database/repositories/productCart.repository';
 
 const databaseRepositories = [
   {
@@ -21,6 +23,10 @@ const databaseRepositories = [
   {
     provide: IProductRepository,
     useClass: ProductRepository,
+  },
+  {
+    provide: IProductCartRepository,
+    useClass: ProductCartRepository,
   },
 ];
 
