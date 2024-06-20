@@ -7,7 +7,7 @@ export function mapProductDetails(data: any): IProductDetails {
     description: data.product_description,
     unit_price: data.product_unit_price,
     deleted_at: data.product_deleted_at,
-    units_sold: data.units_sold || 0,
+    units_sold: Number(data.units_sold || 0),
     category: {
       id: data.category_id,
       name: data.category_name,
