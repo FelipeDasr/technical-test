@@ -1,7 +1,11 @@
 import { Repository } from 'typeorm';
 import { ProductCartEntity } from 'src/database/entities/productCart.entity';
 
-import { ICartDetails, IProductCart } from '../entities/productCart.dto';
+import {
+  ICartDetails,
+  IProductCart,
+  IProductCartSimpleData,
+} from '../entities/productCart.dto';
 
 export abstract class IProductCartRepository extends Repository<ProductCartEntity> {
   public abstract findByUserIdAndProductId(
@@ -11,4 +15,7 @@ export abstract class IProductCartRepository extends Repository<ProductCartEntit
   public abstract findCartDetailsByUserId(
     userId: number,
   ): Promise<ICartDetails | null>;
+  public abstract findAllByUserId(
+    userId: number,
+  ): Promise<IProductCartSimpleData[]>;
 }

@@ -7,10 +7,15 @@ import { IProductCartRepository } from 'src/app/dtos/repositories/productCart.re
 import {
   ICartDetails,
   IProductCart,
+  IProductCartSimpleData,
 } from 'src/app/dtos/entities/productCart.dto';
 
-import { mapCartDetails } from './utils/mappers/carts.mappers';
 import {
+  mapArrayOfCartSimpleData,
+  mapCartDetails,
+} from './utils/mappers/carts.mappers';
+import {
+  resolveFindAllByUserIdQuery,
   resolveFindByUserIdAndProductIdQuery,
   resolveFindCartDetailsQuery,
 } from './utils/resolvers/carts';
@@ -36,5 +41,12 @@ export class ProductCartRepository
   ): Promise<ICartDetails | null> {
     const products = await resolveFindCartDetailsQuery(this, userId);
     return mapCartDetails(products);
+  }
+
+  public async findAllByUserId(
+    userId: number,
+  ): Promise<IProductCartSimpleData[]> {
+    const data = await resolveFindAllByUserIdQuery(this, userId);
+    return mapArrayOfCartSimpleData(data);
   }
 }

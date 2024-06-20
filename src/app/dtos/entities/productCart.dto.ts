@@ -5,6 +5,12 @@ export interface IProductCart {
   quantity: number;
 }
 
+export interface IProductCartSimpleData {
+  product_id: number;
+  product_unit_price: number;
+  quantity: number;
+}
+
 export interface ICartDetails {
   total_of_products: number;
   total_amount: number;

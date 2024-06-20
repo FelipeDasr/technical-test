@@ -31,3 +31,16 @@ export function resolveFindByUserIdAndProductIdQuery(
     )
     .getOne();
 }
+
+export function resolveFindAllByUserIdQuery(
+  repository: IProductCartRepository,
+  userId: number,
+) {
+  return repository
+    .createQueryBuilder('productCart')
+    .where('productCart.user_id = :userId', { userId })
+    .select(['productCart.product_id', 'productCart.quantity'])
+    .leftJoin('productCart.product', 'product')
+    .addSelect('product.unit_price')
+    .getMany();
+}
