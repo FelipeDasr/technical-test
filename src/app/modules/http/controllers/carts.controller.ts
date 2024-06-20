@@ -27,6 +27,7 @@ import { idValidator } from 'src/core/validators/common/id.validator';
 import { AddProductToCartUseCase } from 'src/app/useCases/carts/addProductToCart.usecase';
 import { GetCartDetailsUsecase } from 'src/app/useCases/carts/getCartDetails.usecase';
 import { UpdateProductCartUsecase } from 'src/app/useCases/carts/updateProductCart.usecase';
+import { RemoveProductFromCartUseCase } from 'src/app/useCases/carts/removeProductFromCart.usecase';
 
 @Controller('carts')
 @UseGuards(AuthGuard)
@@ -35,6 +36,7 @@ export class CartsController {
     private readonly addProductToCartUseCase: AddProductToCartUseCase,
     private readonly updateProductCartUsecase: UpdateProductCartUsecase,
     private readonly getCartDetailsUsecase: GetCartDetailsUsecase,
+    private readonly removeProductFromCartUseCase: RemoveProductFromCartUseCase,
   ) {}
 
   @Get()
@@ -83,6 +85,15 @@ export class CartsController {
   @Delete('products/:productCartId')
   public async removeProduct(
     @Request() request: IAuthenticatedRequest,
+    @Param('productCartId', new ValidatorPipe(idValidator))
+    productCartId: number,
     @Res() response: Response,
-  ) {}
+  ) {
+    const deletionResult = await this.removeProductFromCartUseCase.execute(
+      productCartId,
+      request.user.id,
+    );
+
+    return response.status(200).json(deletionResult);
+  }
 }
