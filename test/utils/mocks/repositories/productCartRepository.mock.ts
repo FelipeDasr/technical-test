@@ -5,6 +5,7 @@ export const MockProductCartRepository = {
   delete: jest.fn(),
   findByUserIdAndProductId: jest.fn(),
   findOneBy: jest.fn(),
+  findAllByUserId: jest.fn(),
   findCartDetailsByUserId: jest.fn().mockResolvedValue({
     total_of_products: 1,
     total_amount: 800000,
