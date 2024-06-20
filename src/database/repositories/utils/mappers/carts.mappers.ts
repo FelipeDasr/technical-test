@@ -1,4 +1,9 @@
-import { ICartDetails } from 'src/app/dtos/entities/productCart.dto';
+import {
+  ICartDetails,
+  IProductCartSimpleData,
+} from 'src/app/dtos/entities/productCart.dto';
+import { PurchaseItemEntity } from 'src/database/entities/purchaseItem.entity';
+import { UserPurchaseEntity } from 'src/database/entities/userPurchase.entity';
 
 export function mapCartDetails(data: any[]): ICartDetails {
   if (!data.length) {
@@ -33,4 +38,29 @@ export function mapCartDetails(data: any[]): ICartDetails {
       },
     })),
   };
+}
+
+export function mapArrayOfCartSimpleData(
+  data: any[],
+): IProductCartSimpleData[] {
+  return data.map((product) => ({
+    product_id: product.product_id,
+    product_unit_price: product.product.unit_price,
+    quantity: product.quantity,
+  }));
+}
+
+export function mapItemsToPurchaseItemEntity(
+  data: any[],
+  userPurchase: UserPurchaseEntity,
+) {
+  return data.map((item) => {
+    const purchaseItem = new PurchaseItemEntity();
+    purchaseItem.product_id = item.product_id;
+    purchaseItem.quantity = item.quantity;
+    purchaseItem.unit_price = item.unit_price;
+    purchaseItem.purchase = userPurchase;
+
+    return purchaseItem;
+  });
 }
