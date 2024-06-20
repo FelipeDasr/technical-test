@@ -2,7 +2,11 @@ import { ICartDetails } from 'src/app/dtos/entities/productCart.dto';
 
 export function mapCartDetails(data: any[]): ICartDetails {
   if (!data.length) {
-    return null;
+    return {
+      total_of_products: 0,
+      total_amount: 0,
+      products: [],
+    };
   }
 
   const total_of_products = data.reduce(
