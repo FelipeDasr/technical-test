@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Patch,
@@ -30,6 +31,7 @@ import { CreateProductUseCase } from 'src/app/useCases/products/createProduct.us
 import { GetProductDetailsUsecase } from 'src/app/useCases/products/getProductDetails.usecase';
 import { UpdateProductUsecase } from 'src/app/useCases/products/updateProduct.usecase';
 import { ListProductsUsecase } from 'src/app/useCases/products/listProducts.usecase';
+import { DeleteProductUseCase } from 'src/app/useCases/products/deleteProduct.usecase';
 
 @Controller('products')
 export class ProductsController {
@@ -38,6 +40,7 @@ export class ProductsController {
     private readonly getProductDetailsUsecase: GetProductDetailsUsecase,
     private readonly updateProductUsecase: UpdateProductUsecase,
     private readonly listProductsUsecase: ListProductsUsecase,
+    private readonly deleteProductUseCase: DeleteProductUseCase,
   ) {}
 
   @Post()
@@ -87,6 +90,21 @@ export class ProductsController {
       body,
       request.user.id,
     );
+    return response.status(200).json(result);
+  }
+
+  @Delete(':id')
+  @UseGuards(AuthGuard)
+  public async delete(
+    @Param('id', new ValidatorPipe(idValidator)) productId: number,
+    @Request() request: IAuthenticatedRequest,
+    @Res() response: Response,
+  ) {
+    const result = await this.deleteProductUseCase.execute(
+      productId,
+      request.user.id,
+    );
+
     return response.status(200).json(result);
   }
 }
