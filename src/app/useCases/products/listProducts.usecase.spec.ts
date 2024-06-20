@@ -1,4 +1,4 @@
-import { MockProductRepository } from 'test/utils/mocks/repositories/productRepository.mock';
+import { MockProductRepository } from '../../../../test/utils/mocks/repositories/productRepository.mock';
 import { ListProductsUsecase } from './listProducts.usecase';
 
 describe('ListProductsUseCase', () => {
