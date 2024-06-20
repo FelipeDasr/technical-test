@@ -4,10 +4,10 @@ import { IProductCartRepository } from 'src/app/dtos/repositories/productCart.re
 
 @Injectable()
 export class RemoveProductFromCartUseCase {
-  constructor(private cartRepository: IProductCartRepository) {}
+  constructor(private productCartRepository: IProductCartRepository) {}
 
   async execute(productCartId: number, userId: number) {
-    const { affected } = await this.cartRepository.delete({
+    const { affected } = await this.productCartRepository.delete({
       id: productCartId,
       user_id: userId,
     });
