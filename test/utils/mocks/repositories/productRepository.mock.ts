@@ -15,6 +15,8 @@ export const MockProductRepository = {
       unit_price: product.unit_price,
     };
   }),
+  softDelete: jest.fn(),
+  existsBy: jest.fn(),
   findByNameAndOwnerId: jest
     .fn()
     .mockImplementation(
