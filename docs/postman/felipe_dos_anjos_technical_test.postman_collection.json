@@ -1,0 +1,581 @@
+{
+  "info": {
+    "_postman_id": "d638b418-b03f-460c-b81c-7570fedd5f47",
+    "name": "Technical test",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+    "_exporter_id": "27687099",
+    "_collection_link": "https://www.postman.com/crimson-escape-751617/workspace/public/collection/27687099-d638b418-b03f-460c-b81c-7570fedd5f47?action=share&source=collection_link&creator=27687099"
+  },
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Sign-up",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Felipe Dasr\",\r\n    \"email\": \"felipe@email.com\",\r\n    \"password\": \"test123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "{{url}}/users/signup"
+          },
+          "response": []
+        },
+        {
+          "name": "Sign-in",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// Get the returned tokan and set in the environment vars\r",
+                  "const token = pm.response.json().token;\r",
+                  "pm.environment.set('token', token);"
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"felipe@email.com\",\r\n    \"password\": \"test123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "{{url}}/users/signin"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Decoração\",\r\n    \"description\": \"Artigos para transformar sua casa com estilo, incluindo quadros, cortinas e itens decorativos.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "{{url}}/categories"
+          },
+          "response": []
+        },
+        {
+          "name": "Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/categories/:id",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "categories",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Notebooks\",\r\n    \"description\": \"Explore nossa seleção de notebooks, ideais para estudantes, profissionais e entusiastas de tecnologia. Encontre opções para trabalho, estudo e lazer, com modelos que combinam portabilidade e desempenho.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/categories?limit=10&page=1&includeDeleted=false",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "categories"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "includeDeleted",
+                  "value": "false"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Notebooks\",\r\n    \"description\": \"Aparelhos ideais para estudantes, profissionais e entusiastas de tecnologia. Encontre opções para trabalho, estudo e lazer, com modelos que combinam portabilidade e desempenho\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/categories/:id",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "categories",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Notebooks\",\r\n    \"description\": \"Aparelhos ideais para estudantes, profissionais e entusiastas de tecnologia. Encontre opções para trabalho, estudo e lazer, com modelos que combinam portabilidade e desempenho\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/categories/:id",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "categories",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Iphone 11\",\r\n    \"description\": \"Smartphone da Apple modelo 11.\",\r\n    \"unit_price\": 200000,\r\n    \"category_id\": 4\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "{{url}}/products"
+          },
+          "response": []
+        },
+        {
+          "name": "Details",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/products/:id",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "products",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "6"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Iphone 11\",\r\n    \"description\": \"Smartphone da Apple modelo 11.\",\r\n    \"unit_priced\": 200000,\r\n    \"category_id\": 4\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/products?orderByPrice=DESC",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "products"
+              ],
+              "query": [
+                {
+                  "key": "orderByPrice",
+                  "value": "DESC",
+                  "description": "DESC ou ASC (Default = DESC)"
+                },
+                {
+                  "key": "minPrice",
+                  "value": "150001",
+                  "description": "Value in cents",
+                  "disabled": true
+                },
+                {
+                  "key": "maxPrice",
+                  "value": "150000",
+                  "description": "Value in cents",
+                  "disabled": true
+                },
+                {
+                  "key": "categories[0]",
+                  "value": "4",
+                  "disabled": true
+                },
+                {
+                  "key": "categories[1]",
+                  "value": "11",
+                  "disabled": true
+                },
+                {
+                  "key": "categories[2]",
+                  "value": "8",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Iphone 16\",\r\n    \"description\": \"Smartphone da Apple modelo 16.\",\r\n    \"unit_price\": 199000,\r\n    \"category_id\": 4\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/products/:id",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "products",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "6"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Iphone 11\",\r\n    \"description\": \"Smartphone da Apple modelo 11.\",\r\n    \"unit_priced\": 200000,\r\n    \"category_id\": 4\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/products/:id",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "products",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Carts",
+      "item": [
+        {
+          "name": "Add product",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"product_id\": 6,\r\n    \"quantity\": 1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "{{url}}/carts/products"
+          },
+          "response": []
+        },
+        {
+          "name": "Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{url}}/carts"
+          },
+          "response": []
+        },
+        {
+          "name": "Update card product",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"quantity\": 1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/carts/products/:productCartId",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "carts",
+                "products",
+                ":productCartId"
+              ],
+              "variable": [
+                {
+                  "key": "productCartId",
+                  "value": "16"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete product from cart",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/carts/products/:productCartId",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "carts",
+                "products",
+                ":productCartId"
+              ],
+              "variable": [
+                {
+                  "key": "productCartId",
+                  "value": "15"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Checkout",
+      "item": [
+        {
+          "name": "Buy",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "{{url}}/checkout"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Purchases",
+      "item": [
+        {
+          "name": "List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{url}}/purchases"
+          },
+          "response": []
+        },
+        {
+          "name": "Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/purchases/:userPurchaseId",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "purchases",
+                ":userPurchaseId"
+              ],
+              "variable": [
+                {
+                  "key": "userPurchaseId",
+                  "value": "7"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": {
+      "token": "{{token}}"
+    }
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
