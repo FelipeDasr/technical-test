@@ -32,6 +32,7 @@ export function resolveFindPurchaseDetailsByUserQuery(
   return repository
     .createQueryBuilder('userPurchase')
     .leftJoinAndSelect('userPurchase.items', 'items')
+    .withDeleted()
     .leftJoinAndSelect('items.product', 'product')
     .where('userPurchase.id = :purchaseId', { purchaseId })
     .andWhere('userPurchase.user_id = :userId', { userId })
