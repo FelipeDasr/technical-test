@@ -2,4 +2,6 @@ import { IUserPurchaseRepository } from 'src/app/dtos/repositories/userPurchase.
 
 export const MockUserPurchaseRepository = {
   saveWithItems: jest.fn(),
+  findDetailsByIdAndUserId: jest.fn(),
+  findAllByUserId: jest.fn(),
 } as any as IUserPurchaseRepository;
