@@ -7,3 +7,14 @@ export interface IUserPurchase {
 
 export interface IUserPurchaseSimpleData
   extends Omit<IUserPurchase, 'user_id'> {}
+
+export interface IUserPurchaseWithItems extends Omit<IUserPurchase, 'user_id'> {
+  items: {
+    unit_price: number;
+    quantity: number;
+    product: {
+      id: number;
+      name: string;
+    };
+  }[];
+}

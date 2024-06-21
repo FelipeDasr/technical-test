@@ -6,10 +6,16 @@ import { PurchaseItemEntity } from '../entities/purchaseItem.entity';
 
 import { IUserPurchaseRepository } from 'src/app/dtos/repositories/userPurchase.repositoty.dto';
 import { IEntityCollection, IPaginationQuery } from 'src/app/dtos/repositories';
-import { IUserPurchaseSimpleData } from 'src/app/dtos/entities/userPurchase.dto';
+import {
+  IUserPurchaseSimpleData,
+  IUserPurchaseWithItems,
+} from 'src/app/dtos/entities/userPurchase.dto';
 
 import { mapItemsToPurchaseItemEntity } from './utils/mappers/carts.mappers';
-import { resolveFindAllPurchasesByUserQuery } from './utils/resolvers/purchases';
+import {
+  resolveFindAllPurchasesByUserQuery,
+  resolveFindPurchaseDetailsByUserQuery,
+} from './utils/resolvers/purchases';
 
 @Injectable()
 export class UserPurchaseRepository
@@ -52,5 +58,16 @@ export class UserPurchaseRepository
       total,
       data: purchases,
     };
+  }
+
+  public async findDetailsByIdAndUserId(
+    userId: number,
+    purchaseId: number,
+  ): Promise<IUserPurchaseWithItems> {
+    return await resolveFindPurchaseDetailsByUserQuery(
+      this,
+      userId,
+      purchaseId,
+    );
   }
 }

@@ -2,7 +2,10 @@ import { Repository } from 'typeorm';
 import { UserPurchaseEntity } from 'src/database/entities/userPurchase.entity';
 
 import { IEntityCollection, IPaginationQuery } from '.';
-import { IUserPurchaseSimpleData } from '../entities/userPurchase.dto';
+import {
+  IUserPurchaseSimpleData,
+  IUserPurchaseWithItems,
+} from '../entities/userPurchase.dto';
 
 export abstract class IUserPurchaseRepository extends Repository<UserPurchaseEntity> {
   public abstract saveWithItems(
@@ -14,4 +17,8 @@ export abstract class IUserPurchaseRepository extends Repository<UserPurchaseEnt
     userId: number,
     query: IPaginationQuery,
   ): Promise<IEntityCollection<IUserPurchaseSimpleData>>;
+  public abstract findDetailsByIdAndUserId(
+    userId: number,
+    purchaseId: number,
+  ): Promise<IUserPurchaseWithItems>;
 }
