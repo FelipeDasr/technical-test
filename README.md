@@ -24,12 +24,15 @@ Para mais detalhes sobre os requisitos funcionais, [clique aqui](/docs/requireme
 - [Docker](https://www.docker.com/)
 
 ### Sumário
+
   * [Estrutura do Projeto](#-estrutura-do-projeto)
     * [Diretório `src`](#diretório-src)
     * [🛡️👮 Segurança](#️-segurança-e-garantia-do-funcionamento)
       * [🧪 Testes unitários](#-testes-unitários)
     * [🛢️ Banco de dados](#️-banco-de-dados)
+
 </br>
+
   * [Instruções para execução](#-instruções-para-execução)
     * [🐳 Docker](#-docker)
     * [⬇️ Instalando dependências](#️-instalando-dependências)
