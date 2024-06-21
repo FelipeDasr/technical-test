@@ -7,6 +7,7 @@ import { CategoriesController } from './controllers/categories.controller';
 import { ProductsController } from './controllers/products.controller';
 import { CartsController } from './controllers/carts.controller';
 import { CheckoutController } from './controllers/checkout.controller';
+import { PurchasesController } from './controllers/purchases.controller';
 
 @Module({
   imports: httpImports,
@@ -16,6 +17,7 @@ import { CheckoutController } from './controllers/checkout.controller';
     ProductsController,
     CartsController,
     CheckoutController,
+    PurchasesController,
   ],
   providers: httpProviders,
 })
