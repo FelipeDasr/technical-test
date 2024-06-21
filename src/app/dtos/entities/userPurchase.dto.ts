@@ -4,3 +4,6 @@ export interface IUserPurchase {
   user_id: number;
   purchase_date: Date;
 }
+
+export interface IUserPurchaseSimpleData
+  extends Omit<IUserPurchase, 'user_id'> {}

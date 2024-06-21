@@ -2,10 +2,14 @@ import { Injectable } from '@nestjs/common';
 
 import { UserPurchaseEntity } from '../entities/userPurchase.entity';
 import { DataSource, Repository } from 'typeorm';
+import { PurchaseItemEntity } from '../entities/purchaseItem.entity';
 
 import { IUserPurchaseRepository } from 'src/app/dtos/repositories/userPurchase.repositoty.dto';
-import { PurchaseItemEntity } from '../entities/purchaseItem.entity';
+import { IEntityCollection, IPaginationQuery } from 'src/app/dtos/repositories';
+import { IUserPurchaseSimpleData } from 'src/app/dtos/entities/userPurchase.dto';
+
 import { mapItemsToPurchaseItemEntity } from './utils/mappers/carts.mappers';
+import { resolveFindAllPurchasesByUserQuery } from './utils/resolvers/purchases';
 
 @Injectable()
 export class UserPurchaseRepository
@@ -32,5 +36,21 @@ export class UserPurchaseRepository
     await this.dataSource.getRepository(PurchaseItemEntity).save(purchaseItems);
 
     return userPurchase;
+  }
+
+  public async findAllByUserId(
+    userId: number,
+    query: IPaginationQuery,
+  ): Promise<IEntityCollection<IUserPurchaseSimpleData>> {
+    const [purchases, total] = await resolveFindAllPurchasesByUserQuery(
+      this,
+      userId,
+      query,
+    );
+
+    return {
+      total,
+      data: purchases,
+    };
   }
 }
