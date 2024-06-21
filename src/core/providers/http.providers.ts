@@ -19,6 +19,7 @@ import { UpdateProductCartUsecase } from 'src/app/useCases/carts/updateProductCa
 import { RemoveProductFromCartUseCase } from 'src/app/useCases/carts/removeProductFromCart.usecase';
 import { DeleteProductUseCase } from 'src/app/useCases/products/deleteProduct.usecase';
 import { BuyUseCase } from 'src/app/useCases/checkout/buy.usecase';
+import { ListUserPurchasesUseCase } from 'src/app/useCases/purchases/listUserPurchases.usecase';
 
 export const httpProviders = [
   JwtService,
@@ -39,6 +40,7 @@ export const httpProviders = [
   UpdateProductCartUsecase,
   RemoveProductFromCartUseCase,
   BuyUseCase,
+  ListUserPurchasesUseCase,
 ];
 
 export const httpImports = [DatabaseModule];
