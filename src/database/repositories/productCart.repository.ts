@@ -3,12 +3,12 @@ import { Injectable } from '@nestjs/common';
 import { DataSource, Repository } from 'typeorm';
 import { ProductCartEntity } from '../entities/productCart.entity';
 
-import { IProductCartRepository } from 'src/app/dtos/repositories/productCart.repository.dto';
+import { IProductCartRepository } from 'src/core/dtos/repositories/productCart.repository.dto';
 import {
   ICartDetails,
   IProductCart,
   IProductCartSimpleData,
-} from 'src/app/dtos/entities/productCart.dto';
+} from 'src/core/dtos/entities/productCart.dto';
 
 import {
   mapArrayOfCartSimpleData,

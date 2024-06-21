@@ -1,4 +1,4 @@
-import { IFindAllCategoriesQuery } from 'src/app/dtos/repositories/category.repository.dto';
+import { IFindAllCategoriesQuery } from 'src/core/dtos/repositories/category.repository.dto';
 import * as Joi from 'joi';
 
 import { paginationRequestSchema } from '../common/pagination.validator';

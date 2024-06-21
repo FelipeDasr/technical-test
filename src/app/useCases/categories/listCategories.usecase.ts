@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 import {
   ICategoryRepository,
   IFindAllCategoriesQuery,
-} from 'src/app/dtos/repositories/category.repository.dto';
+} from 'src/core/dtos/repositories/category.repository.dto';
 
 @Injectable()
 export class ListCategoriesUsecase {

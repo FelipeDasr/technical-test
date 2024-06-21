@@ -4,7 +4,7 @@ import { Response } from 'express';
 import {
   IUserSigninRequest,
   IUserSignupRequest,
-} from 'src/app/dtos/requests/users.requests.dto';
+} from 'src/core/dtos/requests/users.requests.dto';
 
 import { ValidatorPipe } from 'src/core/pipes/requestValidator.pipe';
 import { userSigninRequestValidator } from 'src/core/validators/users/userSignin.validator';

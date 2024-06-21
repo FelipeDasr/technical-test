@@ -1,8 +1,8 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 
-import { ICategoryRepository } from 'src/app/dtos/repositories/category.repository.dto';
+import { ICategoryRepository } from 'src/core/dtos/repositories/category.repository.dto';
 
-import { ICreateCategoryRequest } from 'src/app/dtos/requests/categories.request.dto';
+import { ICreateCategoryRequest } from 'src/core/dtos/requests/categories.request.dto';
 
 @Injectable()
 export class CreateCategoryUsecase {

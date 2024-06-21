@@ -6,11 +6,11 @@ import { ProductEntity } from '../entities/product.entity';
 import {
   IFindAllProductsQuery,
   IProductRepository,
-} from 'src/app/dtos/repositories/product.repository.dto';
-import { IProduct, IProductDetails } from 'src/app/dtos/entities/product.dto';
+} from 'src/core/dtos/repositories/product.repository.dto';
+import { IProduct, IProductDetails } from 'src/core/dtos/entities/product.dto';
 
 import { mapProductDetails } from './utils/mappers/products.mappers';
-import { IEntityCollection } from 'src/app/dtos/repositories';
+import { IEntityCollection } from 'src/core/dtos/repositories';
 
 import {
   resolveListProductSimpleDetailsQuery,

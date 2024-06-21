@@ -1,6 +1,6 @@
-import { IUserPurchaseRepository } from 'src/app/dtos/repositories/userPurchase.repositoty.dto';
-import { IUserPurchaseWithItems } from 'src/app/dtos/entities/userPurchase.dto';
-import { IPaginationQuery } from 'src/app/dtos/repositories';
+import { IUserPurchaseRepository } from 'src/core/dtos/repositories/userPurchase.repositoty.dto';
+import { IUserPurchaseWithItems } from 'src/core/dtos/entities/userPurchase.dto';
+import { IPaginationQuery } from 'src/core/dtos/repositories';
 
 import { resolvePaginationQuery } from '.';
 

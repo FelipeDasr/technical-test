@@ -1,6 +1,6 @@
 import * as Joi from 'joi';
 
-import { IFindAllProductsQuery } from 'src/app/dtos/repositories/product.repository.dto';
+import { IFindAllProductsQuery } from 'src/core/dtos/repositories/product.repository.dto';
 
 import { paginationRequestSchema } from '../common/pagination.validator';
 

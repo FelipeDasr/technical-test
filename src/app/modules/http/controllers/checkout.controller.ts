@@ -1,7 +1,7 @@
 import { Controller, Post, Request, UseGuards, Res } from '@nestjs/common';
 import { Response } from 'express';
 
-import { IAuthenticatedRequest } from 'src/app/dtos/requests';
+import { IAuthenticatedRequest } from 'src/core/dtos/requests';
 
 import { AuthGuard } from 'src/core/guards/auth.guard';
 

@@ -1,5 +1,5 @@
-import { IUserRepository } from '../../../../src/app/dtos/repositories/user.repository.dto';
-import { IUser } from 'src/app/dtos/entities/user.dto';
+import { IUserRepository } from '../../../../src/core/dtos/repositories/user.repository.dto';
+import { IUser } from 'src/core/dtos/entities/user.dto';
 
 type mockedEmail = 'return_user' | 'return_null';
 

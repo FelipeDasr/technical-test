@@ -4,12 +4,15 @@ import { UserPurchaseEntity } from '../entities/userPurchase.entity';
 import { DataSource, Repository } from 'typeorm';
 import { PurchaseItemEntity } from '../entities/purchaseItem.entity';
 
-import { IUserPurchaseRepository } from 'src/app/dtos/repositories/userPurchase.repositoty.dto';
-import { IEntityCollection, IPaginationQuery } from 'src/app/dtos/repositories';
+import { IUserPurchaseRepository } from 'src/core/dtos/repositories/userPurchase.repositoty.dto';
+import {
+  IEntityCollection,
+  IPaginationQuery,
+} from 'src/core/dtos/repositories';
 import {
   IUserPurchaseSimpleData,
   IUserPurchaseWithItems,
-} from 'src/app/dtos/entities/userPurchase.dto';
+} from 'src/core/dtos/entities/userPurchase.dto';
 
 import { mapItemsToPurchaseItemEntity } from './utils/mappers/carts.mappers';
 import {

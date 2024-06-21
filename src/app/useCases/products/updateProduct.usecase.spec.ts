@@ -1,4 +1,4 @@
-import { IUpdateProductRequest } from 'src/app/dtos/requests/products.request.dto';
+import { IUpdateProductRequest } from 'src/core/dtos/requests/products.request.dto';
 
 import { MockProductRepository } from '../../../../test/utils/mocks/repositories/productRepository.mock';
 import { MockCategoryRepository } from '../../../../test/utils/mocks/repositories/categoryRepository.mock';

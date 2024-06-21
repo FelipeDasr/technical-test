@@ -1,6 +1,6 @@
 import * as Joi from 'joi';
 
-import { ICreateProductRequest } from 'src/app/dtos/requests/products.request.dto';
+import { ICreateProductRequest } from 'src/core/dtos/requests/products.request.dto';
 
 export const createProductRequestValidator = Joi.object<ICreateProductRequest>({
   name: Joi.string().max(100).required(),

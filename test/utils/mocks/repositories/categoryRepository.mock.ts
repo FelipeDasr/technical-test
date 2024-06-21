@@ -1,5 +1,5 @@
-import { ICategoryRepository } from 'src/app/dtos/repositories/category.repository.dto';
-import { ICategory } from 'src/app/dtos/entities/category.dto';
+import { ICategoryRepository } from 'src/core/dtos/repositories/category.repository.dto';
+import { ICategory } from 'src/core/dtos/entities/category.dto';
 
 type mockedCategory = 'return_category' | 'return_null';
 

@@ -1,7 +1,7 @@
 import {
   IFindAllProductsQuery,
   IProductRepository,
-} from 'src/app/dtos/repositories/product.repository.dto';
+} from 'src/core/dtos/repositories/product.repository.dto';
 import { resolvePaginationQuery } from '.';
 
 function resolveSimpleDetailsQuery(repository: IProductRepository) {

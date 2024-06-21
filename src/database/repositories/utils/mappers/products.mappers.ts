@@ -1,4 +1,4 @@
-import { IProductDetails } from 'src/app/dtos/entities/product.dto';
+import { IProductDetails } from 'src/core/dtos/entities/product.dto';
 
 export function mapProductDetails(data: any): IProductDetails {
   return {

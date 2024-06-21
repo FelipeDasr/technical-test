@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 
-import { IProductRepository } from 'src/app/dtos/repositories/product.repository.dto';
+import { IProductRepository } from 'src/core/dtos/repositories/product.repository.dto';
 
 @Injectable()
 export class GetProductDetailsUsecase {

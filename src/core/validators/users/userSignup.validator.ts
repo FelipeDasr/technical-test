@@ -1,6 +1,6 @@
 import * as Joi from 'joi';
 
-import { IUserSignupRequest } from '../../../app/dtos/requests/users.requests.dto';
+import { IUserSignupRequest } from '../../dtos/requests/users.requests.dto';
 
 export const userSignupRequestValidator = Joi.object<IUserSignupRequest>({
   name: Joi.string().max(100).required(),

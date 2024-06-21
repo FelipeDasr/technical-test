@@ -12,11 +12,11 @@ import {
 } from '@nestjs/common';
 import { Response } from 'express';
 
-import { IFindAllCategoriesQuery } from 'src/app/dtos/repositories/category.repository.dto';
+import { IFindAllCategoriesQuery } from 'src/core/dtos/repositories/category.repository.dto';
 import {
   ICreateCategoryRequest,
   IUpdateCategoryRequest,
-} from 'src/app/dtos/requests/categories.request.dto';
+} from 'src/core/dtos/requests/categories.request.dto';
 
 import { AuthGuard } from 'src/core/guards/auth.guard';
 import { ValidatorPipe } from 'src/core/pipes/requestValidator.pipe';

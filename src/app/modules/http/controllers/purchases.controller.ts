@@ -9,8 +9,8 @@ import {
 } from '@nestjs/common';
 import { Response } from 'express';
 
-import { IAuthenticatedRequest } from 'src/app/dtos/requests';
-import { IPaginationQuery } from 'src/app/dtos/repositories';
+import { IAuthenticatedRequest } from 'src/core/dtos/requests';
+import { IPaginationQuery } from 'src/core/dtos/repositories';
 
 import { AuthGuard } from 'src/core/guards/auth.guard';
 import { ValidatorPipe } from 'src/core/pipes/requestValidator.pipe';

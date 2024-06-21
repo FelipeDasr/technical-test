@@ -13,7 +13,7 @@ import { ProductCartEntity } from './productCart.entity';
 import { CategoryEntity } from './category.entity';
 import { UserEntity } from './user.entity';
 
-import { IProduct } from 'src/app/dtos/entities/product.dto';
+import { IProduct } from 'src/core/dtos/entities/product.dto';
 import { PurchaseItemEntity } from './purchaseItem.entity';
 
 @Entity('products')

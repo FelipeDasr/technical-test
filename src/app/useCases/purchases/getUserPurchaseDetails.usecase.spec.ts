@@ -4,7 +4,7 @@ import { MockUserPurchaseRepository } from '../../../../test/utils/mocks/reposit
 
 import { GetUserPurchaseDetailsUsecase } from './getUserPurchaseDetails.usecase';
 
-jest.mock('src/app/dtos/repositories/userPurchase.repositoty.dto');
+jest.mock('src/core/dtos/repositories/userPurchase.repositoty.dto');
 
 describe('GetUserPurchaseDetailsUsecase', () => {
   const getUserPurchaseDetailsUsecase = new GetUserPurchaseDetailsUsecase(

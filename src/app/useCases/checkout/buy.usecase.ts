@@ -1,8 +1,8 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 
-import { IProductCartRepository } from 'src/app/dtos/repositories/productCart.repository.dto';
-import { IUserPurchaseRepository } from 'src/app/dtos/repositories/userPurchase.repositoty.dto';
-import { IProductCartSimpleData } from 'src/app/dtos/entities/productCart.dto';
+import { IProductCartRepository } from 'src/core/dtos/repositories/productCart.repository.dto';
+import { IUserPurchaseRepository } from 'src/core/dtos/repositories/userPurchase.repositoty.dto';
+import { IProductCartSimpleData } from 'src/core/dtos/entities/productCart.dto';
 
 @Injectable()
 export class BuyUseCase {

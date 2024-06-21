@@ -6,12 +6,12 @@ import { CategoryEntity } from '../entities/category.entity';
 import {
   ICategoryRepository,
   IFindAllCategoriesQuery,
-} from 'src/app/dtos/repositories/category.repository.dto';
+} from 'src/core/dtos/repositories/category.repository.dto';
 import {
   ICategory,
   ICategoryDetails,
-} from 'src/app/dtos/entities/category.dto';
-import { IEntityCollection } from 'src/app/dtos/repositories';
+} from 'src/core/dtos/entities/category.dto';
+import { IEntityCollection } from 'src/core/dtos/repositories';
 import { resolveFindAllCategoriesQuery } from './utils/resolvers/categories';
 
 @Injectable()

@@ -1,4 +1,4 @@
-import { IUserPurchaseRepository } from 'src/app/dtos/repositories/userPurchase.repositoty.dto';
+import { IUserPurchaseRepository } from 'src/core/dtos/repositories/userPurchase.repositoty.dto';
 
 export const MockUserPurchaseRepository = {
   saveWithItems: jest.fn(),

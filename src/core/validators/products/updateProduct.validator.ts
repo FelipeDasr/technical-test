@@ -1,6 +1,6 @@
 import * as Joi from 'joi';
 
-import { IUpdateProductRequest } from 'src/app/dtos/requests/products.request.dto';
+import { IUpdateProductRequest } from 'src/core/dtos/requests/products.request.dto';
 
 export const updateProductRequestValidator = Joi.object<IUpdateProductRequest>({
   name: Joi.string().max(100).optional(),

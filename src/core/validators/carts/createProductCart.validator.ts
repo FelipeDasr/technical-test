@@ -1,6 +1,6 @@
 import * as Joi from 'joi';
 
-import { ICreateProductCartRequest } from 'src/app/dtos/requests/carts.request.dto';
+import { ICreateProductCartRequest } from 'src/core/dtos/requests/carts.request.dto';
 
 export const createProductCartRequestValidator =
   Joi.object<ICreateProductCartRequest>({

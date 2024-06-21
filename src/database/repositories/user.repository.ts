@@ -3,8 +3,8 @@ import { Injectable } from '@nestjs/common';
 import { DataSource, Repository } from 'typeorm';
 import { UserEntity } from '../entities/user.entity';
 
-import { IUserRepository } from 'src/app/dtos/repositories/user.repository.dto';
-import { IUserWithoutPassword } from 'src/app/dtos/entities/user.dto';
+import { IUserRepository } from 'src/core/dtos/repositories/user.repository.dto';
+import { IUserWithoutPassword } from 'src/core/dtos/entities/user.dto';
 
 @Injectable()
 export class UserRepository

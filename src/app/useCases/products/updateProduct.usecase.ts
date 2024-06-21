@@ -4,10 +4,10 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { ICategoryRepository } from 'src/app/dtos/repositories/category.repository.dto';
+import { ICategoryRepository } from 'src/core/dtos/repositories/category.repository.dto';
 
-import { IProductRepository } from 'src/app/dtos/repositories/product.repository.dto';
-import { IUpdateProductRequest } from 'src/app/dtos/requests/products.request.dto';
+import { IProductRepository } from 'src/core/dtos/repositories/product.repository.dto';
+import { IUpdateProductRequest } from 'src/core/dtos/requests/products.request.dto';
 
 @Injectable()
 export class UpdateProductUsecase {

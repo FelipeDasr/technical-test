@@ -4,7 +4,7 @@ import { UserPurchaseEntity } from './userPurchase.entity';
 import { ProductCartEntity } from './productCart.entity';
 import { ProductEntity } from './product.entity';
 
-import { IUser } from 'src/app/dtos/entities/user.dto';
+import { IUser } from 'src/core/dtos/entities/user.dto';
 
 @Entity('users')
 export class UserEntity implements IUser {

@@ -1,6 +1,6 @@
 import * as Joi from 'joi';
 
-import { IUpdateCategoryRequest } from 'src/app/dtos/requests/categories.request.dto';
+import { IUpdateCategoryRequest } from 'src/core/dtos/requests/categories.request.dto';
 
 export const updateCategoryRequestValidator =
   Joi.object<IUpdateCategoryRequest>({

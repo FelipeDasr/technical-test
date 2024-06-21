@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 
-import { IUserPurchaseRepository } from 'src/app/dtos/repositories/userPurchase.repositoty.dto';
+import { IUserPurchaseRepository } from 'src/core/dtos/repositories/userPurchase.repositoty.dto';
 
 @Injectable()
 export class GetUserPurchaseDetailsUsecase {

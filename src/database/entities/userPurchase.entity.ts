@@ -10,7 +10,7 @@ import {
 import { PurchaseItemEntity } from './purchaseItem.entity';
 import { UserEntity } from './user.entity';
 
-import { IUserPurchase } from 'src/app/dtos/entities/userPurchase.dto';
+import { IUserPurchase } from 'src/core/dtos/entities/userPurchase.dto';
 
 @Entity('user_purchases')
 export class UserPurchaseEntity implements IUserPurchase {

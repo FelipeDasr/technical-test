@@ -9,7 +9,7 @@ import {
 
 import { ProductEntity } from './product.entity';
 
-import { ICategory } from 'src/app/dtos/entities/category.dto';
+import { ICategory } from 'src/core/dtos/entities/category.dto';
 
 @Entity('categories')
 export class CategoryEntity implements ICategory {

@@ -12,11 +12,11 @@ import {
 } from '@nestjs/common';
 import { Response } from 'express';
 
-import { IAuthenticatedRequest } from 'src/app/dtos/requests';
+import { IAuthenticatedRequest } from 'src/core/dtos/requests';
 import {
   ICreateProductCartRequest,
   IUpdateProductCartRequest,
-} from 'src/app/dtos/requests/carts.request.dto';
+} from 'src/core/dtos/requests/carts.request.dto';
 
 import { AuthGuard } from 'src/core/guards/auth.guard';
 import { ValidatorPipe } from 'src/core/pipes/requestValidator.pipe';

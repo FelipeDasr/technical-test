@@ -1,7 +1,7 @@
 import {
   ICartDetails,
   IProductCartSimpleData,
-} from 'src/app/dtos/entities/productCart.dto';
+} from 'src/core/dtos/entities/productCart.dto';
 import { PurchaseItemEntity } from 'src/database/entities/purchaseItem.entity';
 import { UserPurchaseEntity } from 'src/database/entities/userPurchase.entity';
 

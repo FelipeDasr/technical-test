@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 
-import { IUserPurchaseRepository } from 'src/app/dtos/repositories/userPurchase.repositoty.dto';
-import { IPaginationQuery } from 'src/app/dtos/repositories';
+import { IUserPurchaseRepository } from 'src/core/dtos/repositories/userPurchase.repositoty.dto';
+import { IPaginationQuery } from 'src/core/dtos/repositories';
 
 @Injectable()
 export class ListUserPurchasesUseCase {

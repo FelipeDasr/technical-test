@@ -10,7 +10,7 @@ import {
 import { ProductEntity } from './product.entity';
 import { UserEntity } from './user.entity';
 
-import { IProductCart } from 'src/app/dtos/entities/productCart.dto';
+import { IProductCart } from 'src/core/dtos/entities/productCart.dto';
 
 @Entity('product_carts')
 export class ProductCartEntity implements IProductCart {

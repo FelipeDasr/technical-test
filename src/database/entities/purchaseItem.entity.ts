@@ -8,7 +8,7 @@ import {
 
 import { UserPurchaseEntity } from './userPurchase.entity';
 
-import { IPurchaseItem } from 'src/app/dtos/entities/purchaseItem.dto';
+import { IPurchaseItem } from 'src/core/dtos/entities/purchaseItem.dto';
 import { ProductEntity } from './product.entity';
 
 @Entity('purchase_items')

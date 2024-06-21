@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 
-import { ICategoryRepository } from 'src/app/dtos/repositories/category.repository.dto';
+import { ICategoryRepository } from 'src/core/dtos/repositories/category.repository.dto';
 
 @Injectable()
 export class GetCategoryDetailsUsecase {

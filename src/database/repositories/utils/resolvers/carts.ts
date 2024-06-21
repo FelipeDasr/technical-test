@@ -1,4 +1,4 @@
-import { IProductCartRepository } from 'src/app/dtos/repositories/productCart.repository.dto';
+import { IProductCartRepository } from 'src/core/dtos/repositories/productCart.repository.dto';
 
 export function resolveFindCartDetailsQuery(
   repository: IProductCartRepository,

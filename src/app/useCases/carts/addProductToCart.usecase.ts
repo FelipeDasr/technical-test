@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 
-import { IProductRepository } from 'src/app/dtos/repositories/product.repository.dto';
-import { IProductCartRepository } from 'src/app/dtos/repositories/productCart.repository.dto';
+import { IProductRepository } from 'src/core/dtos/repositories/product.repository.dto';
+import { IProductCartRepository } from 'src/core/dtos/repositories/productCart.repository.dto';
 
 @Injectable()
 export class AddProductToCartUseCase {

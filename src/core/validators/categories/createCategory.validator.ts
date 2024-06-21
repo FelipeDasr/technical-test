@@ -1,6 +1,6 @@
 import * as Joi from 'joi';
 
-import { ICreateCategoryRequest } from 'src/app/dtos/requests/categories.request.dto';
+import { ICreateCategoryRequest } from 'src/core/dtos/requests/categories.request.dto';
 
 export const createCategoryRequestValidator =
   Joi.object<ICreateCategoryRequest>({

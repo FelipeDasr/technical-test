@@ -1,9 +1,9 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { IUser } from 'src/app/dtos/entities/user.dto';
+import { IUser } from 'src/core/dtos/entities/user.dto';
 
-import { IUserRepository } from 'src/app/dtos/repositories/user.repository.dto';
+import { IUserRepository } from 'src/core/dtos/repositories/user.repository.dto';
 
-import { IUserSigninRequest } from 'src/app/dtos/requests/users.requests.dto';
+import { IUserSigninRequest } from 'src/core/dtos/requests/users.requests.dto';
 
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcryptjs';

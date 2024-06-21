@@ -1,7 +1,7 @@
 import { BadRequestException } from '@nestjs/common';
 
-import { IProductCartRepository } from 'src/app/dtos/repositories/productCart.repository.dto';
-import { IUserPurchaseRepository } from 'src/app/dtos/repositories/userPurchase.repositoty.dto';
+import { IProductCartRepository } from 'src/core/dtos/repositories/productCart.repository.dto';
+import { IUserPurchaseRepository } from 'src/core/dtos/repositories/userPurchase.repositoty.dto';
 
 import { MockProductCartRepository } from '../../../../test/utils/mocks/repositories/productCartRepository.mock';
 import { MockUserPurchaseRepository } from '../../../../test/utils/mocks/repositories/userPurchaseRepository.mock';

@@ -79,7 +79,7 @@
     "coveragePathIgnorePatterns": [
       "node_modules",
       "test-config",
-      "<rootDir>/app/dtos/",
+      "<rootDir>/core/dtos/",
       "<rootDir>/database/",
       ".module.ts",
       ".providers.ts",

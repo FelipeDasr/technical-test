@@ -1,5 +1,5 @@
-import { IProductRepository } from 'src/app/dtos/repositories/product.repository.dto';
-import { IProduct } from 'src/app/dtos/entities/product.dto';
+import { IProductRepository } from 'src/core/dtos/repositories/product.repository.dto';
+import { IProduct } from 'src/core/dtos/entities/product.dto';
 
 type ReturnType = 'return_product' | 'return_null';
 

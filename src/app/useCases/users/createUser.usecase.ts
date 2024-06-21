@@ -1,9 +1,9 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 
-import { IUserRepository } from 'src/app/dtos/repositories/user.repository.dto';
+import { IUserRepository } from 'src/core/dtos/repositories/user.repository.dto';
 
-import { IUserSignupRequest } from 'src/app/dtos/requests/users.requests.dto';
-import { IUserWithoutPassword } from 'src/app/dtos/entities/user.dto';
+import { IUserSignupRequest } from 'src/core/dtos/requests/users.requests.dto';
+import { IUserWithoutPassword } from 'src/core/dtos/entities/user.dto';
 
 import * as bcrypt from 'bcryptjs';
 
